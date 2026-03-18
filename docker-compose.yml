@@ -1,0 +1,20 @@
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: services/user-service/Dockerfile
+    env_file: ./services/user-service/.env.local
+    environment:
+      MONGO_URI: mongodb://user-db:27017/userdb
+    ports:
+      - "3001:3000"
+    depends_on:
+      - user-db
+  user-db:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - user-db-data:/data/db
+volumes:
+  user-db-data:

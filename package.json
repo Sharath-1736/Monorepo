@@ -1,0 +1,24 @@
+{
+  "name": "microservices-archi-nodejs-monorepo",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "node scripts/bootstrap.js",
+    "dev": "node scripts/dev.js",
+    "start:user": "npm run start --workspace=user-service",
+    "db:up": "docker compose up -d user-db",
+    "db:down": "docker compose stop user-db",
+    "docker:up": "node scripts/docker-up.js",
+    "docker:down": "node scripts/docker-down.js",
+    "create:service": "node scripts/create-service.js",
+    "lint": "echo 'add linter'",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

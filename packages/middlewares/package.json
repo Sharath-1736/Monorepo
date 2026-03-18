@@ -1,0 +1,9 @@
+{
+  "name": "@monorepo/middlewares",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}
