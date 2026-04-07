@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pricing Service API",
+    "version": "1.0.0",
+    "description": "API documentation for Pricing Service"
+  },
+  "paths": {
+    "/api/v1/pricings/healthz": {
+      "get": {
+        "summary": "Health check",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

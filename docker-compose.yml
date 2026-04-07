@@ -1,4 +1,59 @@
 services:
+  price-service:
+    build:
+      context: .
+      dockerfile: services/price-service/Dockerfile
+    env_file: ./services/price-service/.env.local
+    environment:
+      MONGO_URI: mongodb://price-db:27017/pricedb
+    ports:
+      - "4001:4001"
+    depends_on:
+      - price-db
+  cart-service:
+    build:
+      context: .
+      dockerfile: services/cart-service/Dockerfile
+    env_file: ./services/cart-service/.env.local
+    environment:
+      MONGO_URI: mongodb://cart-db:27017/cartdb
+    ports:
+      - "4000:4000"
+    depends_on:
+      - cart-db
+  store-service:
+    build:
+      context: .
+      dockerfile: services/store-service/Dockerfile
+    env_file: ./services/store-service/.env.local
+    environment:
+      MONGO_URI: mongodb://store-db:27017/storedb
+    ports:
+      - "3005:3000"
+    depends_on:
+      - store-db
+  product-service:
+    build:
+      context: .
+      dockerfile: services/product-service/Dockerfile
+    env_file: ./services/product-service/.env.local
+    environment:
+      MONGO_URI: mongodb://product-db:27017/productdb
+    ports:
+      - "3004:3000"
+    depends_on:
+      - product-db
+  department-service:
+    build:
+      context: .
+      dockerfile: services/department-service/Dockerfile
+    env_file: ./services/department-service/.env.local
+    environment:
+      MONGO_URI: mongodb://department-db:27017/departmentdb
+    ports:
+      - "3003:3000"
+    depends_on:
+      - department-db
   user-service:
     build:
       context: .
@@ -18,3 +73,8 @@ services:
       - user-db-data:/data/db
 volumes:
   user-db-data:
+  department-db-data:
+  product-db-data:
+  store-db-data:
+  cart-db-data:
+  price-db-data:
